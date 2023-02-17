@@ -9,11 +9,10 @@
 
 
     <!--  注册中心的地址，暂时不注册到注册中心上，到时候采用 url 调用 -->
-    <dubbo:registry address="N/A"></dubbo:registry>
+    <dubbo:registry address="zookeeper://:2181"></dubbo:registry>
 
     <dubbo:reference interface="com.demo.dubbo.api.UserQueryFacade"
-                     id="userQueryFacade"
-                     url="dubbo://192.168.124.4:20880">
+                     id="userQueryFacade">
     </dubbo:reference>
 
 
