@@ -1,4 +1,4 @@
-package com.demo.dubbo.consumer;
+package com.demo.dubbo.consumer.sync;
 
 import com.demo.dubbo.api.UserUpdateFacade;
 import org.apache.dubbo.config.ApplicationConfig;
@@ -18,7 +18,7 @@ public class JavaCodeConsumerApplication {
         // 设置应用服务名称
         ApplicationConfig applicationConfig = new ApplicationConfig("dubbo-consumer");
         // 设置注册中心地址
-        RegistryConfig registryConfig = new RegistryConfig("zookeeper://");
+        RegistryConfig registryConfig = new RegistryConfig("zookeeper://47.116.142.117:2181");
 
         // 创建引用 UserUpdateFacade 这个服务的对象
         ReferenceConfig<UserUpdateFacade> referenceConfig = new ReferenceConfig<>();

@@ -1,4 +1,4 @@
-package com.demo.dubbo.consumer;
+package com.demo.dubbo.consumer.sync;
 
 import com.demo.dubbo.api.UserQueryFacade;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

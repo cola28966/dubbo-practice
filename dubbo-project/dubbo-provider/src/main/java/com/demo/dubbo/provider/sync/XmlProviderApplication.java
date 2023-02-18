@@ -1,4 +1,4 @@
-package com.demo.dubbo.provider;
+package com.demo.dubbo.provider.sync;
 
 import org.apache.dubbo.container.Main;
 
