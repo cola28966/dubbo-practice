@@ -1,6 +1,10 @@
 package com.demo.dubbo.api.async;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface AsyncUserQueryFacade {
 
-    public String queryUserById(String id);
+    String queryUserById(String id);
+
+    CompletableFuture<String> queryUserByName(String name);
 }

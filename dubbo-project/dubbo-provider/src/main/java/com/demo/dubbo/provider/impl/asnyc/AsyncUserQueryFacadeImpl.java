@@ -4,10 +4,8 @@ import com.demo.dubbo.api.async.AsyncUserQueryFacade;
 import org.apache.dubbo.rpc.AsyncContext;
 import org.apache.dubbo.rpc.RpcContext;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.function.Supplier;
 
 public class AsyncUserQueryFacadeImpl implements AsyncUserQueryFacade {
 
@@ -16,6 +14,7 @@ public class AsyncUserQueryFacadeImpl implements AsyncUserQueryFacade {
     @Override
     public String queryUserById(String id) {
         String resultMsg = "id = " + id + ", my name is bob";
+        System.out.println(resultMsg);
 
         AsyncContext asyncContext = RpcContext.startAsync();
         poolExecutor.execute(() -> {
@@ -31,5 +30,20 @@ public class AsyncUserQueryFacadeImpl implements AsyncUserQueryFacade {
         });
 
         return null;
+    }
+
+    @Override
+    public CompletableFuture<String> queryUserByName(String name) {
+        return CompletableFuture.supplyAsync(() -> {
+
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            String resultMsg = "async name = " + name + ", my name is bob";
+            return resultMsg;
+        });
     }
 }
